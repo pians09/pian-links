@@ -8,7 +8,7 @@
     :root {
       --bg-base: #09080d;
       --bg-card: #13111c;
-      --bg-glass: rgba(19, 17, 28, 0.78);
+      --bg-glass: rgba(19, 17, 28, 0.82);
       --accent: #f43f5e;
       --accent-soft: rgba(244, 63, 94, 0.16);
       --accent-glow: rgba(244, 63, 94, 0.45);
@@ -69,14 +69,13 @@
       color: var(--accent);
     }
 
-    /* Container Umum */
     .container {
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
       padding: 0 24px;
     }
 
-    /* Hero Section */
+    /* 1. Hero Section */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -135,6 +134,7 @@
       font-size: 0.92rem;
       box-shadow: 0 6px 20px var(--accent-glow);
       transition: 0.3s;
+      display: inline-block;
     }
 
     .btn-primary:hover {
@@ -152,6 +152,7 @@
       font-size: 0.92rem;
       border: 1px solid var(--border);
       transition: 0.3s;
+      display: inline-block;
     }
 
     .btn-outline:hover {
@@ -159,7 +160,6 @@
       color: var(--accent);
     }
 
-    /* Bingkai Foto Anime Melayang */
     .hero-right {
       flex: 1 1 280px;
       display: flex;
@@ -168,11 +168,10 @@
     }
 
     .anime-frame {
-      position: relative;
       width: 270px;
       height: 310px;
       border-radius: 24px;
-      padding: 6px;
+      padding: 5px;
       background: linear-gradient(135deg, var(--accent), #7c3aed);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 35px var(--accent-glow);
       animation: floatAnime 4s ease-in-out infinite;
@@ -191,14 +190,14 @@
       display: block;
     }
 
-    /* About Section */
+    /* 2. About Section */
     .section {
       padding: 90px 0;
     }
 
     .section-heading {
       text-align: center;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       font-weight: 800;
       margin-bottom: 50px;
     }
@@ -215,9 +214,9 @@
     }
 
     .about-left h2 {
-      font-size: 2rem;
+      font-size: 2.1rem;
       line-height: 1.25;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .about-left h2 span {
@@ -226,15 +225,16 @@
 
     .about-center {
       text-align: center;
+      position: relative;
     }
 
     .about-center img {
-      width: 240px;
-      height: 290px;
+      width: 270px;
+      height: 330px;
       object-fit: cover;
-      border-radius: 22px;
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 35px var(--accent-glow);
+      border-radius: 24px;
+      -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
     }
 
     .about-right p {
@@ -243,13 +243,13 @@
       font-size: 0.95rem;
     }
 
-    /* Portfolio Section + Tab Filter */
+    /* 3. Portfolio Section */
     .tabs {
       display: flex;
       justify-content: center;
       gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 36px;
+      margin-bottom: 40px;
     }
 
     .tab-btn {
@@ -273,45 +273,68 @@
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
     }
 
     .project-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 22px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
       transition: 0.3s;
     }
 
     .project-card:hover {
       transform: translateY(-6px);
       border-color: var(--accent);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
     }
 
-    .project-tag {
-      font-size: 0.75rem;
-      color: var(--accent);
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      display: block;
+    .card-thumb {
+      width: 100%;
+      height: 155px;
+      background: #0c0a12;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+
+    .project-card:hover .card-thumb img {
+      transform: scale(1.05);
+    }
+
+    .card-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .project-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
+      font-size: 1.18rem;
+      margin-bottom: 8px;
     }
 
     .project-card p {
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       margin-bottom: 18px;
     }
 
     .card-link {
       display: inline-block;
+      width: fit-content;
       color: var(--text-main);
       background: rgba(255, 255, 255, 0.06);
       padding: 8px 16px;
@@ -326,7 +349,7 @@
       background: var(--accent);
     }
 
-    /* Music Playlist Section */
+    /* 4. Music Section */
     .music-wrap {
       display: flex;
       flex-wrap: wrap;
@@ -344,7 +367,7 @@
     }
 
     .music-left h2 {
-      font-size: 2rem;
+      font-size: 2.1rem;
       line-height: 1.2;
       margin-bottom: 14px;
     }
@@ -360,40 +383,7 @@
     }
 
     .music-right {
-      flex: 1 1 340px;
-      background: #0d0b14;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-    }
-
-    .track-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 12px;
-      border-radius: 10px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 0.9rem;
-    }
-
-    .track-item:last-child {
-      border-bottom: none;
-    }
-
-    .track-title {
-      font-weight: 600;
-    }
-
-    .track-artist {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .track-time {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 0.82rem;
+      flex: 1 1 360px;
     }
 
     footer {
@@ -417,12 +407,12 @@
     </nav>
   </div>
 
-  <!-- Hero Section -->
+  <!-- 1. Hero Section -->
   <section class="hero container" id="home">
     <div class="hero-left">
       <div class="subtitle">HTML5 &bull; CSS3 &bull; JavaScript &bull; Discord Bot</div>
       <h1>Welcome to<br><span>My Portfolio</span></h1>
-      <p>Berawal dari rasa penasaran, sekarang jadi hobi ngoding. Aku suka bereksperimen membangun bot AI &amp; keamanan Discord, widget karakter anime, serta tampilan web gelap yang interaktif.</p>
+      <p>Berawal dari rasa penasaran, sekarang jadi hobi ngoding. Aku suka bereksperimen membangun bot AI &amp; keamanan Discord, serta tampilan web gelap yang interaktif.</p>
       <div class="btn-group">
         <a href="#portfolio" class="btn-primary">Lihat Projek &rarr;</a>
         <a href="index.html" class="btn-outline">Official Links</a>
@@ -436,11 +426,17 @@
     </div>
   </section>
 
-  <!-- About Me Section -->
+  <!-- 2. About Me Section -->
   <section class="section container" id="about">
     <h2 class="section-heading">About <span>Me</span></h2>
     <div class="about-grid">
       <div class="about-left">
         <h2>Hi, I'm<br><span>@pian</span></h2>
-        <a href="kurumi.html" class="btn-primary">My Kisah Widget</a>
+        <a href="#portfolio" class="btn-primary">Lihat Karya</a>
       </div>
+
+      <div class="about-center">
+        <img src="IMG-20261116-WA0004.jpg" alt="Character Spotlight">
+      </div>
+
+      <div class="about-right">
