@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arena Belajar Coding @pian</title>
+  <style>
+    body {
+      background-color: #141216;
+      color: #ffffff;
+      font-family: sans-serif;
+      padding: 24px;
+    }
+    .kotak-hasil {
+      background-color: #1f1b24;
+      border: 1px solid #dc2626;
+      padding: 16px;
+      border-radius: 10px;
+      margin-top: 16px;
+      font-size: 18px;
+    }
+    button {
+      background-color: #dc2626;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
 
+  <h2>Arena Latihan Coding @pian</h2>
+  <button onclick="jalankanLatihan()">Jalankan Kode</button>
+
+  <div class="kotak-hasil" id="layar">
+    Hasil kodinganmu akan muncul di sini...
+  </div>
+
+  <script>
+    function jalankanLatihan() {
+      // === TULIS KODE LATIHANMU DI BAWAH INI ===
+      let jam = 22;
+      let pesan = "";
+
+      if (jam >= 21) {
+        pesan = "Waktunya tidur, jangan begadang!";
+      } else {
+        pesan = "Semangat ngodingnya!";
+      }
+
+      // Menampilkan hasil ke kotak layar di atas
+      document.getElementById("layar").innerText = pesan;
+    }
+  </script>
+
+</body>
+</html>
