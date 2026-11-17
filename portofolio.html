@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@pian | Anime Developer Portfolio</title>
+  <style>
+    :root {
+      --bg-base: #09080d;
+      --bg-card: #13111c;
+      --bg-glass: rgba(19, 17, 28, 0.78);
+      --accent: #f43f5e;
+      --accent-soft: rgba(244, 63, 94, 0.16);
+      --accent-glow: rgba(244, 63, 94, 0.45);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(244, 63, 94, 0.14), transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(139, 92, 246, 0.12), transparent 45%);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Floating Pill Navbar */
+    .navbar-wrap {
+      position: fixed;
+      top: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+      padding: 0 16px;
+    }
+
+    .nav-pill {
+      background: var(--bg-glass);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      padding: 10px 24px;
+      border-radius: 999px;
+      display: flex;
+      gap: 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-pill a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .nav-pill a:hover {
+      color: var(--accent);
+    }
+
+    /* Container Umum */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 100px;
+      padding-bottom: 60px;
+      gap: 40px;
+    }
+
+    .hero-left {
+      flex: 1 1 460px;
+    }
+
+    .hero-left h1 {
+      font-size: clamp(2.3rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero-left h1 span {
+      color: var(--accent);
+      text-shadow: 0 0 25px var(--accent-glow);
+    }
+
+    .subtitle {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-left p {
+      color: var(--text-muted);
+      max-width: 490px;
+      margin-bottom: 28px;
+      font-size: 0.96rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+      box-shadow: 0 6px 20px var(--accent-glow);
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-main);
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      border: 1px solid var(--border);
+      transition: 0.3s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Bingkai Foto Anime Melayang */
+    .hero-right {
+      flex: 1 1 280px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .anime-frame {
+      position: relative;
+      width: 270px;
+      height: 310px;
+      border-radius: 24px;
+      padding: 6px;
+      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 35px var(--accent-glow);
+      animation: floatAnime 4s ease-in-out infinite;
+    }
+
+    @keyframes floatAnime {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .anime-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      display: block;
+    }
+
+    /* About Section */
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 50px;
+    }
+
+    .section-heading span {
+      color: var(--accent);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      align-items: center;
+      gap: 32px;
+    }
+
+    .about-left h2 {
+      font-size: 2rem;
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+
+    .about-left h2 span {
+      color: var(--accent);
+    }
+
+    .about-center {
+      text-align: center;
+    }
+
+    .about-center img {
+      width: 240px;
+      height: 290px;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 35px var(--accent-glow);
+    }
+
+    .about-right p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    /* Portfolio Section + Tab Filter */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .tab-btn {
+      background: var(--bg-card);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: 0.25s;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      box-shadow: 0 4px 15px var(--accent-glow);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .project-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .card-link {
+      display: inline-block;
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.06);
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .card-link:hover {
+      background: var(--accent);
+    }
+
+    /* Music Playlist Section */
+    .music-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 36px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 36px;
+    }
+
+    .music-left {
+      flex: 1 1 320px;
+    }
+
+    .music-left h2 {
+      font-size: 2rem;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .music-left h2 span {
+      color: var(--accent);
+    }
+
+    .music-left p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 22px;
+    }
+
+    .music-right {
+      flex: 1 1 340px;
+      background: #0d0b14;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .track-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.9rem;
+    }
+
+    .track-item:last-child {
+      border-bottom: none;
+    }
+
+    .track-title {
+      font-weight: 600;
+    }
+
+    .track-artist {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .track-time {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Pill Navbar -->
+  <div class="navbar-wrap">
+    <nav class="nav-pill">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#music">Music</a>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero container" id="home">
+    <div class="hero-left">
+      <div class="subtitle">HTML5 &bull; CSS3 &bull; JavaScript &bull; Discord Bot</div>
+      <h1>Welcome to<br><span>My Portfolio</span></h1>
+      <p>Berawal dari rasa penasaran, sekarang jadi hobi ngoding. Aku suka bereksperimen membangun bot AI &amp; keamanan Discord, widget karakter anime, serta tampilan web gelap yang interaktif.</p>
+      <div class="btn-group">
+        <a href="#portfolio" class="btn-primary">Lihat Projek &rarr;</a>
+        <a href="index.html" class="btn-outline">Official Links</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="anime-frame">
+        <img src="SAVE_20261115_100110.jpg" alt="Karakter Anime">
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section class="section container" id="about">
+    <h2 class="section-heading">About <span>Me</span></h2>
+    <div class="about-grid">
+      <div class="about-left">
+        <h2>Hi, I'm<br><span>@pian</span></h2>
+        <a href="kurumi.html" class="btn-primary">My Kisah Widget</a>
+      </div>
