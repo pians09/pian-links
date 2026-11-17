@@ -8,7 +8,7 @@
     :root {
       --bg-base: #09080d;
       --bg-card: #13111c;
-      --bg-glass: rgba(19, 17, 28, 0.82);
+      --bg-glass: rgba(19, 17, 28, 0.85);
       --accent: #f43f5e;
       --accent-soft: rgba(244, 63, 94, 0.16);
       --accent-glow: rgba(244, 63, 94, 0.45);
@@ -25,36 +25,39 @@
       scroll-behavior: smooth;
     }
 
-    body {
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
       background-color: var(--bg-base);
       background-image:
         radial-gradient(circle at 15% 20%, rgba(244, 63, 94, 0.14), transparent 40%),
         radial-gradient(circle at 85% 75%, rgba(139, 92, 246, 0.12), transparent 45%);
       color: var(--text-main);
-      overflow-x: hidden;
       line-height: 1.6;
     }
 
     /* Floating Pill Navbar */
     .navbar-wrap {
       position: fixed;
-      top: 20px;
-      width: 100%;
+      top: 18px;
+      left: 0;
+      right: 0;
       display: flex;
       justify-content: center;
       z-index: 1000;
-      padding: 0 16px;
+      pointer-events: none;
     }
 
     .nav-pill {
+      pointer-events: auto;
       background: var(--bg-glass);
       backdrop-filter: blur(14px);
       border: 1px solid var(--border);
-      padding: 10px 24px;
+      padding: 10px 26px;
       border-radius: 999px;
       display: flex;
-      gap: 22px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      gap: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
     }
 
     .nav-pill a {
@@ -70,32 +73,41 @@
     }
 
     .container {
-      max-width: 1120px;
+      width: 100%;
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 28px;
     }
 
     /* 1. Hero Section */
     .hero {
       min-height: 100vh;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      padding-top: 100px;
-      padding-bottom: 60px;
-      gap: 40px;
+      padding-top: 90px;
+      padding-bottom: 50px;
+      gap: 36px;
     }
 
     .hero-left {
-      flex: 1 1 460px;
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .subtitle {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
     }
 
     .hero-left h1 {
-      font-size: clamp(2.3rem, 5vw, 3.6rem);
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
       font-weight: 800;
       line-height: 1.15;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .hero-left h1 span {
@@ -103,19 +115,11 @@
       text-shadow: 0 0 25px var(--accent-glow);
     }
 
-    .subtitle {
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 16px;
-      letter-spacing: 0.5px;
-    }
-
     .hero-left p {
       color: var(--text-muted);
       max-width: 490px;
-      margin-bottom: 28px;
-      font-size: 0.96rem;
+      margin-bottom: 26px;
+      font-size: 0.95rem;
     }
 
     .btn-group {
@@ -127,14 +131,16 @@
     .btn-primary {
       background: var(--accent);
       color: #fff;
-      padding: 12px 24px;
+      padding: 11px 22px;
       border-radius: 10px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       box-shadow: 0 6px 20px var(--accent-glow);
       transition: 0.3s;
       display: inline-block;
+      border: none;
+      cursor: pointer;
     }
 
     .btn-primary:hover {
@@ -145,11 +151,11 @@
     .btn-outline {
       background: transparent;
       color: var(--text-main);
-      padding: 12px 24px;
+      padding: 11px 22px;
       border-radius: 10px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       border: 1px solid var(--border);
       transition: 0.3s;
       display: inline-block;
@@ -161,15 +167,15 @@
     }
 
     .hero-right {
-      flex: 1 1 280px;
+      flex: 0 0 auto;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
     .anime-frame {
-      width: 270px;
-      height: 310px;
+      width: 250px;
+      height: 290px;
       border-radius: 24px;
       padding: 5px;
       background: linear-gradient(135deg, var(--accent), #7c3aed);
@@ -190,77 +196,91 @@
       display: block;
     }
 
-    /* 2. About Section */
+    /* 2. About Section - Simetris 3 Kolom */
     .section {
-      padding: 90px 0;
+      padding: 85px 0;
     }
 
     .section-heading {
       text-align: center;
-      font-size: 2.3rem;
+      font-size: 2.2rem;
       font-weight: 800;
-      margin-bottom: 50px;
+      margin-bottom: 12px;
     }
 
     .section-heading span {
       color: var(--accent);
     }
 
+    .section-desc {
+      text-align: center;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 44px;
+      font-size: 0.94rem;
+    }
+
     .about-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
       gap: 32px;
     }
 
     .about-left h2 {
-      font-size: 2.1rem;
+      font-size: 2rem;
       line-height: 1.25;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     .about-left h2 span {
       color: var(--accent);
     }
 
+    .about-role {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
     .about-center {
-      text-align: center;
-      position: relative;
+      display: flex;
+      justify-content: center;
     }
 
     .about-center img {
-      width: 270px;
-      height: 330px;
+      width: 230px;
+      height: 280px;
       object-fit: cover;
-      border-radius: 24px;
-      -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
-      mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
+      border-radius: 22px;
+      border: 1px solid rgba(244, 63, 94, 0.35);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.85), 0 0 25px rgba(244, 63, 94, 0.2);
     }
 
     .about-right p {
       color: var(--text-muted);
-      margin-bottom: 16px;
-      font-size: 0.95rem;
+      margin-bottom: 14px;
+      font-size: 0.92rem;
     }
 
     /* 3. Portfolio Section */
     .tabs {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
 
     .tab-btn {
       background: var(--bg-card);
       color: var(--text-muted);
       border: 1px solid var(--border);
-      padding: 10px 20px;
+      padding: 9px 18px;
       border-radius: 10px;
       cursor: pointer;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       transition: 0.25s;
     }
 
@@ -273,8 +293,8 @@
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
     }
 
     .project-card {
@@ -295,10 +315,9 @@
 
     .card-thumb {
       width: 100%;
-      height: 155px;
+      height: 150px;
       background: #0c0a12;
       border-bottom: 1px solid var(--border);
-      position: relative;
       overflow: hidden;
     }
 
@@ -322,13 +341,13 @@
     }
 
     .project-card h3 {
-      font-size: 1.18rem;
+      font-size: 1.12rem;
       margin-bottom: 8px;
     }
 
     .project-card p {
       color: var(--text-muted);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       margin-bottom: 18px;
     }
 
@@ -340,8 +359,10 @@
       padding: 8px 16px;
       border-radius: 8px;
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 600;
+      border: none;
+      cursor: pointer;
       transition: 0.25s;
     }
 
@@ -351,23 +372,18 @@
 
     /* 4. Music Section */
     .music-wrap {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
       align-items: center;
-      justify-content: space-between;
-      gap: 36px;
+      gap: 32px;
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 22px;
-      padding: 36px;
-    }
-
-    .music-left {
-      flex: 1 1 320px;
+      padding: 32px;
     }
 
     .music-left h2 {
-      font-size: 2.1rem;
+      font-size: 2rem;
       line-height: 1.2;
       margin-bottom: 14px;
     }
@@ -378,65 +394,69 @@
 
     .music-left p {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       margin-bottom: 22px;
     }
 
-    .music-right {
-      flex: 1 1 360px;
+    /* Modal Popup Detail Proyek */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(6px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--accent);
+      border-radius: 18px;
+      max-width: 460px;
+      width: 100%;
+      padding: 26px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px var(--accent-glow);
+    }
+
+    .modal-tag {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .modal-box h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .modal-box p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 20px;
     }
 
     footer {
       text-align: center;
-      padding: 30px;
+      padding: 28px;
       color: var(--text-muted);
       font-size: 0.85rem;
       border-top: 1px solid var(--border);
     }
-  </style>
-</head>
-<body>
 
-  <!-- Floating Pill Navbar -->
-  <div class="navbar-wrap">
-    <nav class="nav-pill">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#music">Music</a>
-    </nav>
-  </div>
-
-  <!-- 1. Hero Section -->
-  <section class="hero container" id="home">
-    <div class="hero-left">
-      <div class="subtitle">HTML5 &bull; CSS3 &bull; JavaScript &bull; Discord Bot</div>
-      <h1>Welcome to<br><span>My Portfolio</span></h1>
-      <p>Berawal dari rasa penasaran, sekarang jadi hobi ngoding. Aku suka bereksperimen membangun bot AI &amp; keamanan Discord, serta tampilan web gelap yang interaktif.</p>
-      <div class="btn-group">
-        <a href="#portfolio" class="btn-primary">Lihat Projek &rarr;</a>
-        <a href="index.html" class="btn-outline">Official Links</a>
-      </div>
-    </div>
-
-    <div class="hero-right">
-      <div class="anime-frame">
-        <img src="SAVE_20261115_100110.jpg" alt="Karakter Anime">
-      </div>
-    </div>
-  </section>
-
-  <!-- 2. About Me Section -->
-  <section class="section container" id="about">
-    <h2 class="section-heading">About <span>Me</span></h2>
-    <div class="about-grid">
-      <div class="about-left">
-        <h2>Hi, I'm<br><span>@pian</span></h2>
-        <a href="#portfolio" class="btn-primary">Lihat Karya</a>
-      </div>
-
-      <div class="about-center">
-        <img src="IMG-20261116-WA0004.jpg" alt="Character Spotlight">
-      </div>
-
-      <div class="about-right">
+    @media (max-width: 720px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .about-grid, .cards-grid, .music-wrap {
