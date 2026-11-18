@@ -140,23 +140,33 @@
 
   <script>
     const barisLirik = [
-      '<span class="cmt">// Track: 20 Min — Lil Uzi Vert (Code Edition)</span>',
+      '<span class="cmt">// [INTRO] Track: 20 Min — Lil Uzi Vert (Extended Code)</span>',
       '<span class="kw">let</span> waktuTersisa = <span class="num">20</span>; <span class="cmt">// menit sebelum acara dimulai</span>',
-      '<span class="kw">const</span> status = <span class="str">"Said she wanna roll with me"</span>;',
+      '<span class="kw">const</span> suasana = <span class="str">"Lampu kota menyala di tengah malam"</span>;',
+      '<span class="kw">let</span> vibe = <span class="str">"Luv Is Rage 2"</span>;',
       '',
+      '<span class="cmt">// [CHORUS]</span>',
       '<span class="kw">function</span> jalankanMalamIni(menit) {',
       '  <span class="kw">if</span> (menit === <span class="num">20</span>) {',
       '    console.log(<span class="str">"I got 20 more minutes until I gotta go..."</span>);',
-      '    console.log(<span class="str">"So I told that girl that she gonna slaughter"</span>);',
+      '    console.log(<span class="str">"Said she wanna roll with me"</span>);',
+      '    console.log(<span class="str">"Every second counts when the beat drops"</span>);',
       '  }',
+      '',
+      '  <span class="cmt">// [VERSE - Loop Countdown]</span>',
       '  <span class="kw">while</span> (waktuTersisa > <span class="num">0</span>) {',
-      '    nikmatiBeat(<span class="str">"Luv Is Rage 2"</span>);',
+      '    nikmatiBeat(vibe);',
       '    waktuTersisa--;',
+      '    <span class="kw">if</span> (waktuTersisa === <span class="num">10</span>) {',
+      '      console.log(<span class="str">"Setengah perjalanan, energi tetap penuh!"</span>);',
+      '    }',
       '  }',
       '}',
       '',
+      '<span class="cmt">// [OUTRO]</span>',
       'jalankanMalamIni(waktuTersisa);',
-      '<span class="cmt">// Process finished with exit code 0 (Vibe Complete)</span>'
+      '<span class="kw">return</span> <span class="str">"Waktu habis, tapi musiknya tetap berputar."</span>;',
+      '<span class="cmt">// Process finished with exit code 0</span>'
     ];
 
     let sedangJalan = false;
